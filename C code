@@ -1,0 +1,42 @@
+#include <stdio.h>
+typedef enum
+{
+    standard,
+    seasonal,
+    weight
+} DiscountType;
+
+double get_discounted_price(double cart_weight, double total_price, 
+                            DiscountType discount_type)
+{
+    switch (discount_type) {
+        case standard:
+        discount = 0.10;
+        break;
+    case seasonal:
+        discount = 0.20;
+        break;
+    case weight:
+        if (cart_weight > 10) {
+            discount = 0.15;
+        } else {
+            discount = 0.05;
+        }
+        break;
+    default:
+        discount = 0.0;
+    }
+    
+    return total_price - (total_price * discount);
+}
+    // Waiting to be implemented
+
+#ifndef RunTests
+int main()
+{
+    double cart_weight = 12.0;
+    double total_price = 100.0;
+    printf("Discounted Price: %.2f\n", get_discounted_price(cart_weight, total_price, weight));
+    return 0;
+}
+#endif
